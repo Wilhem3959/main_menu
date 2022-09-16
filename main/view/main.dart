@@ -44,7 +44,15 @@ class MyHomePage extends StatelessWidget {
         child: Image.asset('assets/images/air_force_logo.png',
             width: 500, height: 500),
       ),
-      drawer: const Drawer(child: HeaderDrawer()),
+      drawer: const Drawer(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(40),
+            bottomRight: Radius.circular(40),
+          ),
+        ),
+        child: HeaderDrawer(),
+      ),
     );
   }
 }

@@ -16,12 +16,6 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(40),
-          bottomRight: Radius.circular(40),
-        ),
-      ),
       backgroundColor: const Color(0xFF3D3D3D),
       child: ListView(
         scrollDirection: Axis.vertical,
