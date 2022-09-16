@@ -10,7 +10,6 @@ void main() {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
     SystemUiOverlay.bottom, //This line is used for showing the bottom bar
   ]);
-
   // Then call runApp() as normal
   runApp(const MyApp());
 }
@@ -41,8 +40,9 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar:
           AppBar(title: Text(title), backgroundColor: const Color(0xFF0437F2)),
-      body: const Center(
-        child: Text('My Page!'),
+      body: Center(
+        child: Image.asset('assets/images/air_force_logo.png',
+            width: 500, height: 500),
       ),
       drawer: Drawer(
         shape: const RoundedRectangleBorder(
@@ -51,7 +51,7 @@ class MyHomePage extends StatelessWidget {
             bottomRight: Radius.circular(40),
           ),
         ),
-        backgroundColor: Color(0xFF3D3D3D),
+        backgroundColor: const Color(0xFF3D3D3D),
 
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
