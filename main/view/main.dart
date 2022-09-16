@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'drawer_header.dart';
-import 'drone_list_view.dart';
 
 void main() {
   // Add these 2 lines
