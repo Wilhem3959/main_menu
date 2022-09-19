@@ -6,6 +6,7 @@ class HeaderDrawer extends StatefulWidget {
   const HeaderDrawer({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HeaderDrawerState createState() => _HeaderDrawerState();
 }
 
@@ -29,20 +30,21 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
         // Important: Remove any padding from the ListView.
         padding: const EdgeInsets.only(right: 20, left: 20),
         children: [
-          DrawerHeader(
-            child: Container(
-              alignment: Alignment.centerLeft,
-              color: const Color(0xFF3D3D3D),
-              height: 0,
-              child: Stack(
-                children: const <Widget>[
-                  Text("Drones",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                      ))
-                ],
-              ),
+          Container(
+            alignment: Alignment.centerLeft,
+            color: const Color(0x0000ffff),
+            width: double.infinity,
+            height: 70,
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  " Drones Available",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  textAlign: TextAlign.left,
+                ),
+              ],
             ),
           ),
           const Divider(
