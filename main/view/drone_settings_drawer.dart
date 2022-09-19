@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'drone_list_view.dart';
 import 'map_live.dart';
 
-class HeaderDrawer extends StatefulWidget {
-  const HeaderDrawer({super.key});
+class EndDrawer extends StatefulWidget {
+  const EndDrawer({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _HeaderDrawerState createState() => _HeaderDrawerState();
+  _EndDrawerState createState() => _EndDrawerState();
 }
 
-class _HeaderDrawerState extends State<HeaderDrawer> {
+class _EndDrawerState extends State<EndDrawer> {
   get mainAxisAlignment => null;
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return Scaffold(
+        endDrawer: Drawer(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(40),
@@ -90,6 +91,6 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
           ),
         ],
       ),
-    );
+    ));
   }
 }
