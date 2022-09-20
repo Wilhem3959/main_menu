@@ -1,6 +1,9 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 
 import 'drawer_header.dart';
+import 'drone_list_view.dart';
 import 'drone_settings_drawer.dart';
 import 'map.dart';
 
@@ -22,24 +25,8 @@ class _MapLiveState extends State<MapLive> {
             appBar: AppBar(
                 title: const Text('Autonomous Reconnaissance Drone'),
                 backgroundColor: const Color(0xFF0437F2)),
-            drawer: const Drawer(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
-                ),
-              ),
-              child: HeaderDrawer(),
-            ),
-            endDrawer: const Drawer(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  bottomLeft: Radius.circular(40),
-                ),
-              ),
-              child: EndDrawer(),
-            ),
+            drawer: const HeaderDrawer(),
+            endDrawer: const EndDrawer(),
             body: Align(
               alignment: Alignment.topLeft,
               child: LayoutBuilder(

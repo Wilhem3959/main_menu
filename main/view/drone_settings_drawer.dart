@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'drone_list_view.dart';
 import 'map_live.dart';
 
@@ -11,24 +12,17 @@ class EndDrawer extends StatefulWidget {
 }
 
 class _EndDrawerState extends State<EndDrawer> {
-  get mainAxisAlignment => null;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        endDrawer: Drawer(
+    return Drawer(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(40),
-          bottomRight: Radius.circular(40),
+          topLeft: Radius.circular(40),
+          bottomLeft: Radius.circular(40),
         ),
       ),
       backgroundColor: const Color(0xFF3D3D3D),
-      child: ListView(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        // Important: Remove any padding from the ListView.
-        padding: const EdgeInsets.only(right: 20, left: 20),
+      child: Column(
         children: [
           Container(
             alignment: Alignment.centerLeft,
@@ -91,6 +85,6 @@ class _EndDrawerState extends State<EndDrawer> {
           ),
         ],
       ),
-    ));
+    );
   }
 }
