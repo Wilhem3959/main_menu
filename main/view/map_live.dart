@@ -1,9 +1,7 @@
-// ignore_for_file: unnecessary_const
-
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 import 'drawer_header.dart';
-import 'drone_list_view.dart';
 import 'drone_settings_drawer.dart';
 import 'map.dart';
 
@@ -17,6 +15,33 @@ class MapLive extends StatefulWidget {
 
 class _MapLiveState extends State<MapLive> {
   get mainAxisAlignment => null;
+
+  List<CameraDescription>? cameras; //list out the camera available
+  CameraController? controller; //controller for camera
+  XFile? image; //for caputred image
+
+  @override
+  void initState() {
+    loadCamera();
+    super.initState();
+  }
+
+  loadCamera() async {
+    cameras = await availableCameras();
+    if (cameras != null) {
+      controller = CameraController(cameras![0], ResolutionPreset.max);
+      //cameras[0] = first camera, change to 1 to another camera
+
+      controller!.initialize().then((_) {
+        if (!mounted) {
+          return;
+        }
+        setState(() {});
+      });
+    } else {
+      print("NO any camera found");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,24 +65,19 @@ class _MapLiveState extends State<MapLive> {
                       child: const MapScreen(),
                     ),
                     Container(
-                      height: constraints.maxHeight,
-                      width: constraints.maxWidth / 2,
-                      color: Colors.pink[400],
-                      alignment: Alignment.topLeft,
-                      child: const Text('The video output would go here'),
-                      //Video error picture would go here
-                    ),
+                        height: constraints.maxHeight,
+                        width: constraints.maxWidth / 2,
+                        child: controller == null
+                            ? const Center(child: Text("Loading Camera..."))
+                            : !controller!.value.isInitialized
+                                ? const Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : CameraPreview(controller!)),
                   ]);
                 },
               ),
             ),
-
-            // floatingActionButton: const FloatingActionButton(
-            //   onPressed: null,
-            //   child: Icon(Icons.menu),
-            //   shape: RoundedRectangleBorder(),
-            //   ),
-            // floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
             bottomNavigationBar: BottomNavigationBar(items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.assistant_direction),
