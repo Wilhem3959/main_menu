@@ -1,22 +1,34 @@
-import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'dart:math';
 
-class DroneListView extends StatelessWidget {
-  final List<String> data = [];
+import 'package:flutter_testing/Properties/drone.dart';
 
-  DroneListView({super.key}) {
-    for (var i = 0; i < 3; i++) {
-      data.add(_randomString(20));
-    }
+class DroneListView extends StatefulWidget {
+  
+  DroneListView({super.key});
+  
+  static List<Drone> drones = [];
+
+  @override
+  State<DroneListView> createState() => _DroneListViewState();
+
+  static void addDrone(){
+    drones.add(Drone(name:_randomString(20)));
   }
 
-  String _randomString(int length) {
+  static String _randomString(int length) {
     var rand = Random();
     var codeUnits = List.generate(length, (index) {
       return rand.nextInt(33) + 89;
     });
     return String.fromCharCodes(codeUnits);
   }
+
+}
+///////////////////////////////////////////////
+
+class _DroneListViewState extends State<DroneListView> {
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +47,20 @@ class DroneListView extends StatelessWidget {
             height: 50,
             color: const Color(0x0000ffff),
             child: Center(
-              child: Text(
-                data[index],
-                style: const TextStyle(color: Colors.white),
+              child: Expanded(
+                child: TextButton(
+                  onPressed: (){},
+                  child: Text(DroneListView.drones[index].name,
+                  style: TextStyle(color: Colors.white),),
+                  //style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
           ),
         );
       },
-      itemCount: data.length,
+      itemCount: DroneListView.drones.length,
     );
   }
 }
+
